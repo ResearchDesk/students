@@ -24,22 +24,25 @@ public class MonitorProcess {
    public static String start = "START";
       public static   List transition = Arrays.asList("MOVELEFT", "MOVE", "MOVELEFT");
     public static ArrayList monioringAutomata() {
+        System.out.println("Generating Monitor Automata");
         ArrayList fullautomata = new ArrayList();
         List states = f.getAllStates();
      
         fullautomata.add(states);
         fullautomata.add(start);
         fullautomata.add(transition);
+        System.out.println("Automata Generated successfully");
         return fullautomata;
     }
 
     public static void INIT() {
-
+        System.out.println("running the initialiser");
         gv0.put("gstate", start);
         gv0.put("q",f.ProcessFSM(transition.get(0).toString()) );
         gv0.put("p_trans", "");
         gv0.put("tokens", "");
         GV.add(gv0);
+        System.out.println("All values intialised successfully");
     }
 
     /**
@@ -47,6 +50,7 @@ public class MonitorProcess {
      * @param monioringAutomata
      */
     public static void  startMonitor(ArrayList monioringAutomata){
+        System.out.println("starting the monitor process");
         List Q;
         String q0;
         List del;
@@ -54,5 +58,8 @@ public class MonitorProcess {
        Q=(List)monioringAutomata.get(0);
         q0=(String)monioringAutomata.get(1);
         del=(List)monioringAutomata.get(2);
+        System.out.println(Q);
+         System.out.println(q0);
+          System.out.println(del);
     }
 }
