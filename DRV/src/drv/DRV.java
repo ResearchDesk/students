@@ -37,10 +37,10 @@ public class DRV {
                     return true;
                 }
             });
-            ArrayList monioringAutomata = monioringAutomata();
-            System.out.println(monioringAutomata);
-            INIT();
-            startMonitor(monioringAutomata);
+//            ArrayList monioringAutomata = monioringAutomata();
+//            System.out.println(monioringAutomata);
+//            INIT();
+//            startMonitor(monioringAutomata);
 
 //            System.out.println(f.getCurrentState());
 //            f.ProcessFSM("MOVELEFT");
