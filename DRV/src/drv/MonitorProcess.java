@@ -41,4 +41,18 @@ public class MonitorProcess {
         gv0.put("tokens", "");
         GV.add(gv0);
     }
+
+    /**
+     *
+     * @param monioringAutomata
+     */
+    public static void  startMonitor(ArrayList monioringAutomata){
+        List Q;
+        String q0;
+        List del;
+        String lambda;
+        for(int i=0;i<=monioringAutomata.size();i++){
+            
+        }
+    }
 }
