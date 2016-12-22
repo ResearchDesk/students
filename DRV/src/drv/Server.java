@@ -14,7 +14,7 @@ public class Server {
     private ServerSocket serverSocket;
     // Rep invariant: serverSocket != null
 
-    /** Make a SquareServer that listens for connections on port.
+    /** 
      *  @param port port number, requires 0 <= port <= 65535 */
     public Server(int port) throws IOException {
         serverSocket = new ServerSocket(port);
@@ -79,7 +79,7 @@ public class Server {
         }
     }
 
-    /** Start a SquareServer running on the default port. */
+   
     public static void main(String[] args) {
         try {
            Server server = new Server(SQUARE_PORT);
