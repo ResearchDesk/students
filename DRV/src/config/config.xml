@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FSM>
+ <STATE id="START" type="ID">
+  <MESSAGE id="MOVE" action="move" nextState="START"/>
+  <MESSAGE id="MOVELEFT" action="moveLeft" nextState="INTERMEDIATE"/>
+  <MESSAGE id="MOVERIGHT" action="moveRight" nextState="STOP"/>
+ </STATE>
+ <STATE id="INTERMEDIATE">
+  <MESSAGE id="MOVELEFT" action="moveLeft" nextState="STOP"/>
+  <MESSAGE id="MOVERIGHT" action="moveRight" nextState="SAMPLE"/>
+ </STATE>
+ <STATE id="STOP">
+ </STATE>
+ <STATE id="SAMPLE">
+ </STATE>
+ 
+</FSM>
