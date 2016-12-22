@@ -24,7 +24,7 @@ public class DRV {
             FSM f = new FSM("src/config/config.xml", new FSMAction() {
                 @Override
                 public boolean action(String curState, String message, String nextState, Object args) {
-                    javax.swing.JOptionPane.showMessageDialog(null, curState + ":" + message +" : " +nextState);
+                    //javax.swing.JOptionPane.showMessageDialog(null, curState + ":" + message +" : " +nextState);
                     /*
                      * Here we can implement our login of how we wish to handle an action
                      */
@@ -37,7 +37,7 @@ public class DRV {
             System.out.println(f.getCurrentState());
             f.ProcessFSM("MOVE");
             System.out.println(f.getCurrentState());
-            f.ProcessFSM("MOVELEFT");
+            f.ProcessFSM("MOVERIGHT");
             System.out.println(f.getCurrentState());
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(DRV.class.getName()).log(Level.SEVERE, null, ex);
