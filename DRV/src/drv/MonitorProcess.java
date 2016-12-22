@@ -51,8 +51,8 @@ public class MonitorProcess {
         String q0;
         List del;
         String lambda;
-        for(int i=0;i<=monioringAutomata.size();i++){
-            
-        }
+       Q=(List)monioringAutomata.get(0);
+        q0=(String)monioringAutomata.get(1);
+        del=(List)monioringAutomata.get(2);
     }
 }
