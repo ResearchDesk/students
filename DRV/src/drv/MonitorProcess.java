@@ -49,7 +49,7 @@ public class MonitorProcess {
      *
      * @param monioringAutomata
      */
-    public static void  startMonitor(ArrayList monioringAutomata){
+    public static String  startMonitor(ArrayList monioringAutomata){
         System.out.println("starting the monitor process");
         List Q;
         String q0;
@@ -58,8 +58,36 @@ public class MonitorProcess {
        Q=(List)monioringAutomata.get(0);
         q0=(String)monioringAutomata.get(1);
         del=(List)monioringAutomata.get(2);
-        System.out.println(Q);
-         System.out.println(q0);
-          System.out.println(del);
+//        System.out.println(Q);
+//         System.out.println(q0);
+//          System.out.println(del);
+          int i=1;
+          while (i==1){
+              ArrayList m=recieve();
+              if (!m.isEmpty()){
+                  RecieveToken(m);
+              }
+              ArrayList e= read();
+              if(!e.isEmpty()){
+                 ReceiveEvents(e); 
+              }
+          }
+        return null;
+    }
+
+    private static ArrayList read() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static ArrayList recieve() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static void RecieveToken(ArrayList m) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static void ReceiveEvents(ArrayList e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

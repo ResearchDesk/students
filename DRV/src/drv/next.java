@@ -121,6 +121,7 @@ for (Object s : monioringAutomata)
 
 System.out.println(listString);
          jTextArea1.setText(listString);
+         jToggleButton1.setEnabled(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -129,11 +130,13 @@ System.out.println(listString);
            ArrayList monioringAutomata = monioringAutomata();
             jTextArea1.append("running the initialiser\n");
            System.out.println("running the initialiser");
+            jTextArea1.append("Calling Intialization Function\n");
            INIT();
             jTextArea1.append("All values intialised successfully\n");
              jTextArea1.append("Monitoring started\n");
-            startMonitor(monioringAutomata);
-        
+              jToggleButton2.setEnabled(false);
+        String startMonitor = startMonitor(monioringAutomata);
+          jTextArea1.append(startMonitor+"\n");
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
