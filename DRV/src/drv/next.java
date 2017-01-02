@@ -10,7 +10,12 @@ import static drv.DRV.testFSM;
 import static drv.MonitorProcess.INIT;
 import static drv.MonitorProcess.monioringAutomata;
 import static drv.MonitorProcess.startMonitor;
+import drv.eventlistner.NIOServer;
+import drv.eventlistner.Responders;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,9 +41,9 @@ public class next extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jToggleButton2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +54,10 @@ public class next extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         jToggleButton2.setText("start Monitoring");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,24 +65,20 @@ public class next extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jToggleButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButton2)
-                .addGap(48, 48, 48))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +99,7 @@ public class next extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +115,11 @@ public class next extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText(null);
-         testFSM();
+        try {
+            testFSM();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(next.class.getName()).log(Level.SEVERE, null, ex);
+        }
          ArrayList monioringAutomata = monioringAutomata();
          String listString = "";
 
@@ -125,18 +134,23 @@ System.out.println(listString);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-          jTextArea1.setText(null);
-           ArrayList monioringAutomata = monioringAutomata();
+        try {
+            // TODO add your handling code here:
+            jTextArea1.setText(null);
+            ArrayList monioringAutomata = monioringAutomata();
             jTextArea1.append("running the initialiser\n");
-           System.out.println("running the initialiser");
+//            System.out.println("running the initialiser");
             jTextArea1.append("Calling Intialization Function\n");
-           INIT();
+            INIT();
             jTextArea1.append("All values intialised successfully\n");
-             jTextArea1.append("Monitoring started\n");
-              jToggleButton2.setEnabled(false);
-        String startMonitor = startMonitor(monioringAutomata);
-          jTextArea1.append(startMonitor+"\n");
+            jTextArea1.append("Monitoring started\n");
+            jToggleButton2.setEnabled(false);
+            String startMonitor = startMonitor(monioringAutomata);
+            jTextArea1.append(startMonitor+"\n");
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**

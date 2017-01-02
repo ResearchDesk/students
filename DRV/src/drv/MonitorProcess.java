@@ -6,6 +6,12 @@
 package drv;
 
 import static drv.DRV.f;
+import drv.eventlistner.NIOClient;
+import drv.eventlistner.NIOServer;
+import drv.eventlistner.Responder;
+import drv.eventlistner.Responders;
+import drv.eventlistner.localresponder;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -49,7 +55,8 @@ public class MonitorProcess {
      *
      * @param monioringAutomata
      */
-    public static String  startMonitor(ArrayList monioringAutomata){
+    public static String  startMonitor(ArrayList monioringAutomata) throws IOException, InterruptedException{
+       
         System.out.println("starting the monitor process");
         List Q;
         String q0;
@@ -62,20 +69,28 @@ public class MonitorProcess {
 //         System.out.println(q0);
 //          System.out.println(del);
           int i=1;
-          while (i==1){
-              ArrayList m=recieve();
-              if (!m.isEmpty()){
-                  RecieveToken(m);
-              }
-              ArrayList e= read();
+          while (true){
+              System.out.println("started");
+                 NIOClient c1=new NIOClient();
+        Responder responder = new Responder();
+        localresponder res= new localresponder();
+        c1.addListener(responder);
+         c1.addListenerlocal(res);
+        c1.data();
+//              ArrayList m=recieve();
+//              if (!m.isEmpty()){
+//                  RecieveToken(m);
+//              }
+              
+              HashMap e= read();
               if(!e.isEmpty()){
                  ReceiveEvents(e); 
               }
           }
-        return null;
+       
     }
 
-    private static ArrayList read() {
+    private static HashMap read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -87,7 +102,7 @@ public class MonitorProcess {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static void ReceiveEvents(ArrayList e) {
+    private static void ReceiveEvents(HashMap e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

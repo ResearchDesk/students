@@ -25,27 +25,26 @@ public class DRV {
 
     public static FSM f;
 
-    public static void testFSM() {
+    public static void testFSM() throws InterruptedException {
         try {
             f = new FSM("src/config/config.xml", new FSMAction() {
                 @Override
                 public boolean action(String curState, String message, String nextState, Object args) {
-                    // javax.swing.JOptionPane.showMessageDialog(null, curState + ":" + message +" : " +nextState);
-                    /*
-                     * Here we can implement our login of how we wish to handle an action
-                     */
+             //        javax.swing.JOptionPane.showMessageDialog(null, curState + ":" + message +" : " +nextState);
+                  
                     return true;
                 }
             });
 //            ArrayList monioringAutomata = monioringAutomata();
-//            System.out.println(monioringAutomata);
+//           System.out.println(monioringAutomata);
 //            INIT();
 //            startMonitor(monioringAutomata);
-
+//
 //            System.out.println(f.getCurrentState());
 //            f.ProcessFSM("MOVELEFT");
+            
 //            System.out.println(f.getCurrentState());
-//            f.ProcessFSM("MOVE");
+//           f.ProcessFSM("MOVE");
 //            System.out.println(f.getCurrentState());
 //            f.ProcessFSM("MOVELEFT");
 //            System.out.println(f.getCurrentState());
@@ -61,7 +60,7 @@ public class DRV {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
         testFSM();
     }
